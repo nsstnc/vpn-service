@@ -1,0 +1,15 @@
+pandas
+openpyxl
+requests
+pysocks
+gspread
+gspread-dataframe
+oauth2client
+fastapi
+sqlalchemy
+apscheduler
+passlib
+bcrypt
+fastapi-login
+starlette
+itsdangerous

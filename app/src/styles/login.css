@@ -1,0 +1,86 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Bahnschrift Light', sans-serif;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #7DE0C8, #807FC0);
+    letter-spacing: 0.05em;
+
+}
+
+/* Контейнер для формы */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+
+label {
+    width: 100%;
+    display: flex;
+    margin-bottom: 0;
+    text-align: left;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #C6C6C6;
+    background: #C6C6C6;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: 45%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+
+}
+
+/* Кнопки Войти и Зарегистрироваться */
+button[type="submit"] {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 20px;
+    background-color: #7DE0C8;
+    color: black;
+    letter-spacing: 0.10em;
+    height: 50px;
+    width: 60%;
+    font-weight: normal;
+}
+
+button[type="submit"]:hover {
+    background-color: #61AB99;
+
+}
+
+button[type="button"] {
+    background-color: #807FC0;
+    color: black;
+}
+
+button[type="button"]:hover {
+    background-color: #66659B;
+
+}
+
+/* Стили для текста ошибки, если он есть */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}

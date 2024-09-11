@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    {% if message %} {{message}} {% endif %}
+    <h2>Привет, {{name}}</h2>
+
+    <br>
+
+    <form id="logout-form" action="/logout" method="post">
+        <button type="submit">Выйти</button>
+    </form>
+{% endblock %}
+
