@@ -89,6 +89,8 @@ def get_login_page(request: Request):
 
 
 @router.post("/logout")
-def logout(request: Request, response: Response):
-    request.session.clear()
-    return RedirectResponse(url="/", status_code=303)
+def logout(request: Request):
+    # request.session.clear()
+    response = RedirectResponse(url="/", status_code=303)
+    response.delete_cookie(key="access-token")
+    return response
