@@ -46,7 +46,10 @@ def login(email: str = Form(...), password: str = Form(...), db: Session = Depen
             detail="Неверный email или пароль"
         )
     access_token = manager.create_access_token(data={"sub": email})
-    redirect_response = RedirectResponse(url="/main", status_code=303)
+    if user.status == Status.ADMIN:
+        redirect_response = RedirectResponse(url="/admin", status_code=303)
+    else:
+        redirect_response = RedirectResponse(url="/main", status_code=302)
     manager.set_cookie(redirect_response, access_token)
 
     return redirect_response
@@ -63,7 +66,7 @@ def register(request: Request, email: str = Form(...), name: str = Form(...), pa
             detail="Такой email уже зарегистрирован"
         )
     hashed_password = pwd_context.hash(password)
-    new_user = Users(email=email, name=name, password=hashed_password)
+    new_user = Users(email=email, name=name, password=hashed_password, status=Status.ADMIN)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
@@ -76,6 +79,9 @@ def register(request: Request, email: str = Form(...), name: str = Form(...), pa
 def main_protected(request: Request, user=Depends(manager), db: Session = Depends(get_session)):
     return templates.TemplateResponse(request=request, name="main.html",
                                       context={"name": user.name})
+
+
+
 
 
 @router.get("/", response_class=HTMLResponse)

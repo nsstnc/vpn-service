@@ -10,6 +10,9 @@ from sqlalchemy.orm import Session
 from database import Base, engine, init_db, get_session
 
 from app.routers.login import router as login_router
+from app.routers.admin import router as admin_router
+from app.routers.accounts import router as accounts_router
+from app.routers.servers import router as servers_router
 from config import AUTH_SECRET
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -30,6 +33,9 @@ app.add_middleware(
 
 
 app.include_router(login_router)
+app.include_router(admin_router)
+app.include_router(accounts_router)
+app.include_router(servers_router)
 app.mount("/styles", StaticFiles(directory="./src/styles"), name="styles")
 
 

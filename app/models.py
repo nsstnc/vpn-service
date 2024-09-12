@@ -21,6 +21,10 @@ class UserRegister(BaseModel):
     name: str
     password: str
 
+class Status(enum.Enum):
+    USER = "user"
+    ADMIN = "admin"
+
 
 class Users(Base):
     __tablename__ = 'users'
@@ -28,6 +32,7 @@ class Users(Base):
     name = Column(String, nullable=False)
     email = Column(String, nullable=False)
     password = Column(String, nullable=False)
+    status = Column(Enum(Status), default=Status.USER, nullable=False)
 
 
 

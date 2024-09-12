@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Page{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="sidebar">
+        <div class="logo">{{name}}</div>
+            <button onclick="window.location.href='/admin'" class="nav-button">главная</button>
+            <button onclick="window.location.href='/admin/servers'" class="nav-button">cерверы</button>
+            <button onclick="window.location.href='/admin/accounts'" class="nav-button">аккаунты</button>
+        <form id="logout-form" action="/logout" method="post">
+            <button class="nav-button-exit" type="submit">выйти</button>
+        </form>
+    </div>
+    <div class="main-content">
+        <!-- Future functionality will go here -->
+        {% block main_content %}
+        Какая-то инфа для главной страницы
+        {% endblock %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
