@@ -79,6 +79,7 @@ def register(request: Request, email: str = Form(...), name: str = Form(...),
                              f"Пароль: {password}\n"),
                             email)
 
-    return templates.TemplateResponse(request=request, name="admin.html",
-                                      context={"message": "Пользователь зарегистрирован"})
+    return templates.TemplateResponse(request=request, name="admin_accounts.html",
+                                      context={"message": "Пользователь зарегистрирован",
+                                               "current_page": "admin"})
     # return {"message": "Пользователь создан и зарегистрирован"}

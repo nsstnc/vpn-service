@@ -34,7 +34,8 @@ def main_protected(request: Request, user=Depends(manager), db: Session = Depend
     if user.status != Status.ADMIN:
         return RedirectResponse(url="/main", status_code=302)
     return templates.TemplateResponse(request=request, name="admin.html",
-                                      context={"name": user.name})
+                                      context={"name": user.name,
+                                               "current_page": "admin"})
 
 
 @router.get("/admin/accounts")
@@ -42,7 +43,8 @@ def main_protected(request: Request, user=Depends(manager), db: Session = Depend
     if user.status != Status.ADMIN:
         return RedirectResponse(url="/main", status_code=302)
     return templates.TemplateResponse(request=request, name="admin_accounts.html",
-                                      context={"name": user.name})
+                                      context={"name": user.name,
+                                               "current_page": "accounts"})
 
 
 @router.get("/admin/servers")
@@ -50,4 +52,5 @@ def main_protected(request: Request, user=Depends(manager), db: Session = Depend
     if user.status != Status.ADMIN:
         return RedirectResponse(url="/main", status_code=302)
     return templates.TemplateResponse(request=request, name="admin_servers.html",
-                                      context={"name": user.name})
+                                      context={"name": user.name,
+                                               "current_page": "servers"})

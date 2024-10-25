@@ -6,9 +6,9 @@
 <div class="admin-container">
     <div class="sidebar">
         <div class="logo">{{name}}</div>
-            <button onclick="window.location.href='/admin'" class="nav-button">главная</button>
-            <button onclick="window.location.href='/admin/servers'" class="nav-button">cерверы</button>
-            <button onclick="window.location.href='/admin/accounts'" class="nav-button">аккаунты</button>
+            <button onclick="window.location.href='/admin'" class="nav-button {{ 'active' if current_page == 'admin' else '' }}">главная</button>
+        <button onclick="window.location.href='/admin/servers'" class="nav-button {{ 'active' if current_page == 'servers' else '' }}">сервера</button>
+        <button onclick="window.location.href='/admin/accounts'" class="nav-button {{ 'active' if current_page == 'accounts' else '' }}">аккаунты</button>
         <form id="logout-form" action="/logout" method="post">
             <button class="nav-button-exit" type="submit">выйти</button>
         </form>
